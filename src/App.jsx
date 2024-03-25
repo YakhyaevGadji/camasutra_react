@@ -1,23 +1,14 @@
 import React from 'react'
-
+import Header from './Components/Header'
+import NavBar from './Components/NavBar'
+import Profile from './Components/Profile'
 
 function App() {
     return (
         <div className='app-wrapper'>
-            <header className='header'>
-                Logo
-            </header>
-            <nav>
-                <div>
-                    Profile
-                </div>
-                <div>
-                    Messages
-                </div>
-            </nav>
-            <div>
-                Main
-            </div>
+            <Header/>
+            <NavBar/>
+            <Profile/>
         </div>
     )
 }
