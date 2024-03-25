@@ -1,6 +1,8 @@
+import s from "./Profile.module.css";
+
 const Profile = () => {
     return (
-        <div className="content">
+        <div className={s.content}>
             <div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7yn8kq_YVzTYhemWw3Q3coPHgqHyfZRnP7w&s" alt=""/>
             </div>
@@ -9,14 +11,16 @@ const Profile = () => {
             </div>
             <div>
                 My posts
-                <div>New post</div>
                 <div>
-                    <div>post 1</div>
-                    <div>post 2</div>
+                    New post
+                </div>
+                <div className={s.posts}>
+                    <div className="item">post 1</div> 
+                    <div className="item">post 2</div>
                 </div>
             </div>
         </div>
     );
-};
-
+}
+ 
 export default Profile;
