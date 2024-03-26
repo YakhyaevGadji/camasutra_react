@@ -5,7 +5,7 @@ const ProfileInfo = () => {
     return (
         <div>
             <div>
-                <img src='https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350' />
+                <img src='https://kartinki.pics/uploads/posts/2021-07/1626173608_49-kartinkin-com-p-krasivii-fon-priroda-krasivo-60.jpg' />
             </div>
             <div className={s.descriptionBlock}>
                 ava + description
