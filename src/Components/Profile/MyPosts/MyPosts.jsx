@@ -4,12 +4,15 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
     const text = React.useRef();
-    const [valueState, setValueState] = React.useState('');
+    console.log(props);
     let postsElements = props.posts.map((postsItem) => <Post key={postsItem.id} message={postsItem.message} likesCount={postsItem.likesCount} />)
 
-    let addPost = (value) => {
-        setValueState(value);
-        props.addPost(value);
+    let addPost = () => {
+        props.addPost();
+    };
+
+    let onPostChange = () => {
+        props.updateNewPostText(text.current.value);
     };
 
     return (
@@ -17,10 +20,10 @@ const MyPosts = (props) => {
             <h3>My posts</h3> 
         <div>
             <div>
-                <textarea ref={text}></textarea>
+                <textarea onChange={onPostChange} value={props.newPostText} ref={text}></textarea>
             </div>
             <div>
-                <button onClick={() => addPost(text.current.value)}>Add post</button>
+                <button onClick={addPost}>Add post</button>
             </div>
         </div>
             <div className={s.posts}>
