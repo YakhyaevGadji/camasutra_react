@@ -8,11 +8,11 @@ const MyPosts = (props) => {
     let postsElements = props.posts.map((postsItem) => <Post key={postsItem.id} message={postsItem.message} likesCount={postsItem.likesCount} />)
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch({ type: 'ADD-POST' });
     };
 
     let onPostChange = () => {
-        props.updateNewPostText(text.current.value);
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text.current.value});
     };
 
     return (
