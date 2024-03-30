@@ -1,34 +1,31 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/state';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPostText, profileReducer } from '../../../redux/slices/profileSlice';
 
-const MyPosts = (props) => {
+
+const MyPosts = () => {
     const text = React.useRef();
-    console.log(props);
-    let postsElements = props.posts.map((postsItem) => <Post key={postsItem.id} message={postsItem.message} likesCount={postsItem.likesCount} />)
+    const { newPostText, posts } = useSelector((state) => state.profileSlice);
+    const dispatch = useDispatch();
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
-    };
-
-    let onPostChange = () => {
-        props.dispatch(updateNewPostTextActionCreator(text.current.value));
-    };
+    const newPost = posts.map((item) => <Post key={item.id} message={item.message} likesCount={item.likesCount}/>)
+   
 
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3> 
         <div>
             <div>
-                <textarea onChange={onPostChange} value={props.newPostText} ref={text}></textarea>
+                <textarea onChange={(event) => dispatch(addPostText(event.target.value))} value={newPostText}></textarea>
             </div>
             <div>
-                <button onClick={addPost}>Add post</button>
+                <button onClick={() => dispatch(profileReducer(newPostText))}>Add post</button>
             </div>
         </div>
             <div className={s.posts}>
-                {postsElements}
+                {newPost}
             </div>
         </div>
     )
